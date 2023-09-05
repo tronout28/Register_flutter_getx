@@ -13,25 +13,32 @@ class ResultPage extends StatelessWidget {
       appBar: AppBar(title: Text('User Data Result')),
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Username: ${userData.username}'),
-            Text('Name: ${userData.name}'),
-            Text('Email: ${userData.email}'),
-            Text('Phone Number: ${userData.phoneNumber}'),
-            Text('Address: ${userData.address}'),
-            userData.profileImage.value.isNotEmpty
-                ? Expanded(
-                    child: Container(
-                      width: double.infinity,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              userData.profileImage.value.isNotEmpty
+                  ? ClipOval(
                       child: Image.file(
                         File(userData.profileImage.value),
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                  )
-                : Container(),
-          ],
+                    )
+                  : Container(),
+              SizedBox(height: 16),
+              Text('Username: ${userData.username}'),
+              SizedBox(height: 8),
+              Text('Name: ${userData.name}'),
+              SizedBox(height: 8),
+              Text('Email: ${userData.email}'),
+              SizedBox(height: 8),
+              Text('Phone Number: ${userData.phoneNumber}'),
+              SizedBox(height: 8),
+              Text('Address: ${userData.address}'),
+            ],
+          ),
         ),
       ),
     );
